@@ -33,7 +33,9 @@ Future<FlutterLocalNotificationsPlugin>
       android: initializationSettingsAndroid,
       iOS: initializationSettingsApple,
       macOS: initializationSettingsApple);
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  await flutterLocalNotificationsPlugin.initialize(
+    settings: initializationSettings,
+  );
   return flutterLocalNotificationsPlugin;
 }
 
@@ -273,6 +275,10 @@ class MyApp extends HookWidget {
     final platformChannelSpecifics =
         NotificationDetails(android: androidOptions, iOS: iosOptions);
     await flutterLocalNotificationsPlugin.show(
-        0, notification.title, notification.body, platformChannelSpecifics);
+      id: 0,
+      title: notification.title,
+      body: notification.body,
+      notificationDetails: platformChannelSpecifics,
+    );
   }
 }

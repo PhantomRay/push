@@ -1,8 +1,7 @@
 import Foundation
-#if os(macOS)
-    // Needed on macOS, otherwise build won't find e.g. UNUserNotificationCenterDelegate. Optional on iOS.
-    import UserNotifications
-#endif
+import UserNotifications
+
+import push_pigeon
 
 class UserNotificationCenterDelegateHandlers: NSObject, UNUserNotificationCenterDelegate {
     private let originalDelegate: UNUserNotificationCenterDelegate?

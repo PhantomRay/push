@@ -1,3 +1,5 @@
+import UserNotifications
+
 #if os(iOS)
     import Flutter
     import UIKit
@@ -5,18 +7,17 @@
     public typealias DarwinApplication = UIApplication
 #elseif os(macOS)
     import FlutterMacOS
-    import UserNotifications
 
     public typealias DarwinApplication = NSApplication
 #endif
 
-public class SwiftPushPlugin: NSObject, FlutterPlugin {
+public class PushPlugin: NSObject, FlutterPlugin {
     private let flutterPluginRegistrar: FlutterPluginRegistrar
     private var pushHostHandlers: PushHostHandlers
-    public static var instance: SwiftPushPlugin? = nil
+    public static var instance: PushPlugin? = nil
 
     public static func register(with registrar: FlutterPluginRegistrar) {
-        instance = SwiftPushPlugin(with: registrar)
+        instance = PushPlugin(with: registrar)
     }
 
     init(with registrar: FlutterPluginRegistrar) {

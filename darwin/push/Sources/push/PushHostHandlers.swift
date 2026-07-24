@@ -1,7 +1,12 @@
 import Foundation
-#if os(macOS)
-    // Needed on macOS, otherwise build won't find e.g. UNUserNotificationCenterDelegate. Optional on iOS.
-    import UserNotifications
+import UserNotifications
+
+import push_pigeon
+
+#if os(iOS)
+    import Flutter
+#elseif os(macOS)
+    import FlutterMacOS
 #endif
 
 class PushHostHandlers: NSObject, PUPushHostApi {

@@ -54,8 +54,12 @@ class MetadataSliver extends HookWidget {
                   final position = box.localToGlobal(Offset.zero);
                   final rect =
                       Rect.fromLTWH(position.dx, position.dy, 200, 200);
-                  Share.share(pushToken.value ?? "Error: no token was found",
-                      sharePositionOrigin: rect);
+                  SharePlus.instance.share(
+                    ShareParams(
+                      text: pushToken.value ?? "Error: no token was found",
+                      sharePositionOrigin: rect,
+                    ),
+                  );
                 },
               ),
               Expanded(child: Text(pushToken.value.toString()))
